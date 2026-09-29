@@ -119,89 +119,32 @@ The Digital Twin is continuously updated using available simulated and user-gene
 
 > **Important:** This project is a community-scale software prototype. It does not attempt to create a complete physical replica of an entire city.
 
----
+#  2. 🕳️ Pothole Detection & Road Condition Monitoring
 
-## 2. 💧 Water Monitoring & Shortage Prediction
+CommunityTwin can use AI-based computer vision to identify potholes and damaged road surfaces from images submitted by citizens.
 
-The system monitors simulated water-level and consumption-related data.
+The objective is to help identify **road-related problems, locate affected areas, estimate their severity, and prioritize them for maintenance**.
 
-Example:
-
-```text
-Water Level
-────────────
-80% → Normal
-60% → Normal
-45% → Medium
-30% → Critical
-```
-
-Historical trends can be analyzed to identify decreasing water availability.
-
-The ML model can use features such as:
-
-* Current water level
-* Previous water levels
-* Consumption trend
-* Temperature/weather conditions
-* Historical water usage
-* Time/date
-
-### Output
+## 🔄 Workflow
 
 ```text
-Current Water Level: 32%
+Citizen Uploads Road Image
+          ↓
+    Image Preprocessing
+          ↓
+   AI / Computer Vision
+          ↓
+    Pothole Detection
+          ↓
+   Severity Estimation
+          ↓
+   Location Association
+          ↓
+     Priority Engine
+          ↓
+ Recommended Road Action
 
-Water Status: 🔴 Critical
-
-Predicted Risk:
-HIGH probability of water shortage
-```
-
----
-
-# 🌧️ 3. Flood Risk Prediction
-
-The flood module combines multiple factors instead of relying on rainfall alone.
-
-### Possible inputs
-
-* Rainfall intensity
-* Water level
-* Rate of water-level increase
-* Drainage condition
-* Historical flood occurrence
-* Location/elevation information
-* Previous waterlogging reports
-
-### Example
-
-```text
-Rainfall              → High
-Water Level           → Rising rapidly
-Drainage Condition    → Poor
-Historical Floods     → Frequent
-
-                 ↓
-
-          AI Flood Model
-
-                 ↓
-
-        Flood Risk = HIGH
-```
-
-The result can be displayed as:
-
-```text
-🟢 Low Risk
-🟡 Medium Risk
-🔴 High Risk
-```
-
----
-
-# 🗑️ 4. Waste Hotspot Detection
+# 🗑️ 3. Waste Hotspot Detection
 
 Citizens can submit photographs of waste accumulation.
 
@@ -239,7 +182,7 @@ Waste Hotspot → Area C
 
 ---
 
-# 👥 5. Citizen Reporting
+# 👥 4. Citizen Reporting
 
 Citizens can report community problems through the application.
 
@@ -270,7 +213,7 @@ Citizen reports become one of the data sources for the Community Digital Twin.
 
 ---
 
-# 🗺️ 6. Interactive Community Map
+# 🗺️ 5. Interactive Community Map
 
 The map provides geographical visualization of community conditions.
 
@@ -302,7 +245,7 @@ The map can display:
 
 ---
 
-# 🎯 7. AI Priority Engine
+# 🎯 6. AI Priority Engine
 
 The Priority Engine helps identify which problems require greater attention.
 
@@ -336,49 +279,6 @@ AI PRIORITIES
 
 The system acts as a **decision-support mechanism**. It does not automatically replace the decision-making authority of officials.
 
----
-
-# 🔄 8. What-If Simulation
-
-The simulation module allows users to modify selected parameters and observe how the predicted risk may change.
-
-### Example
-
-Current condition:
-
-```text
-Rainfall = 50 mm/hour
-Water Level = 70%
-Flood Risk = Medium
-```
-
-User changes:
-
-```text
-Rainfall = 75 mm/hour
-```
-
-The system recalculates the scenario:
-
-```text
-Flood Risk
-
-MEDIUM 🟡
-     ↓
-HIGH 🔴
-```
-
-Other possible simulation parameters include:
-
-* Rainfall
-* Water level
-* Drainage condition
-* Water consumption
-* Waste accumulation
-
-The simulation is intended for **scenario analysis**, not guaranteed future prediction.
-
----
 
 # 🤖 AI / ML Components
 
@@ -778,7 +678,7 @@ Hotspot Identification
 | NumPy              | Numerical computation |
 | Scikit-learn       | ML models             |
 | OpenCV             | Image processing      |
-| YOLO / Ultralytics | Waste detection       |
+    |
 
 ## Database
 
@@ -796,62 +696,6 @@ Hotspot Identification
 | VS Code    | Development                  |
 | Postman    | API testing                  |
 
----
-
-# 📁 Suggested Repository Structure
-
-```text
-CommunityTwin/
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   ├── hooks/
-│   │   └── utils/
-│   ├── public/
-│   └── package.json
-│
-├── backend/
-│   ├── app/
-│   │   ├── main.py
-│   │   ├── api/
-│   │   ├── models/
-│   │   ├── schemas/
-│   │   ├── services/
-│   │   └── database/
-│   ├── requirements.txt
-│   └── .env.example
-│
-├── ml/
-│   ├── data/
-│   ├── notebooks/
-│   ├── water_prediction/
-│   ├── flood_prediction/
-│   ├── waste_detection/
-│   ├── preprocessing/
-│   └── evaluation/
-│
-├── database/
-│   ├── schema/
-│   ├── migrations/
-│   └── seed/
-│
-├── docs/
-│   ├── architecture/
-│   ├── research/
-│   ├── diagrams/
-│   └── presentations/
-│
-├── tests/
-│
-├── .gitignore
-├── README.md
-└── LICENSE
-```
-
----
 
 # 🔐 Security
 
@@ -1046,76 +890,6 @@ Priority generated
 
 ---
 
-# 📊 Example End-to-End Scenario
-
-Consider a community called **Community A**.
-
-### Step 1
-
-The system receives simulated rainfall data:
-
-```text
-Rainfall = 85 mm/hour
-```
-
-### Step 2
-
-Water-level data shows:
-
-```text
-70% → 82% → 91%
-```
-
-### Step 3
-
-A citizen reports:
-
-```text
-Blocked drainage
-Location: Area B
-```
-
-### Step 4
-
-The Digital Twin updates Area B.
-
-```text
-Area B
-Flood Risk = HIGH
-```
-
-### Step 5
-
-The priority engine evaluates:
-
-```text
-Severity       → High
-Urgency        → High
-Affected area  → High
-Predicted risk → High
-```
-
-### Step 6
-
-Dashboard displays:
-
-```text
-🔴 HIGH PRIORITY
-
-Area B – Flood Risk
-
-Recommended:
-Inspect drainage and monitor
-water levels.
-```
-
-This demonstrates the complete:
-
-> **Data → Digital Twin → AI → Risk → Priority → Action**
-
-workflow.
-
----
 
 # 🧠 Why Use a Digital Twin?
 
