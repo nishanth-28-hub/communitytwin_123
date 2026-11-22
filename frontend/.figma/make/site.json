@@ -1,0 +1,10 @@
+{
+  "description": "AI-powered platform connects citizens and municipalities to report, prioritize, track, and verify civic issues, enhancing community infrastructure and engagement.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
